@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/src:/app
+      - ./models:/models
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/app:cached
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+networks:
+  app_network:
