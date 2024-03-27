@@ -122,6 +122,8 @@ export default {
 .message-input {
   display: flex;
   align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
   padding: 10px;
   background-color: #333;
 }
